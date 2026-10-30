@@ -1,0 +1,26 @@
+[package]
+name = "emcp"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.88"
+description = "MCP bridge for driving a Roblox executor over WebSocket"
+license = "MIT"
+
+[dependencies]
+anyhow = "1"
+async-channel = "2.5"
+async-net = "2"
+async-tungstenite = "0.35"
+futures-util = { version = "0.3", features = ["sink"] }
+rmcp = { version = "3.8", features = ["server", "transport-io"] }
+schemars = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+smol = "2"
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "sync", "time"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+[profile.release]
+lto = "thin"
+strip = true
